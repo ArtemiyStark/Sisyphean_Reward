@@ -12,6 +12,9 @@ data class Score(
 //Змінні з Налаштувань
 data class Settings(
     val id:Int = 0,
+    val darkTheme: Boolean = false, //false Light Theme, true Dark Theme
+    val langUkr: Boolean = false, //false English, true Ukrainian
+    val pixelFont: Boolean = false //false Ubuntu, true Minecraft Font
 
 )
 

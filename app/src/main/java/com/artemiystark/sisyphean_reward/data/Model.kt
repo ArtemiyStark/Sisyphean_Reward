@@ -1,16 +1,23 @@
 package com.artemiystark.sisyphean_reward.data
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.time.LocalDateTime
 
+
 // Нагородні бали
+@Entity(tableName = "score")
 data class Score(
+    @PrimaryKey(autoGenerate = true)
     val id:Int = 0,
 //    val name:String,
     val totalScore: Int = 0
 )
 
 //Змінні з Налаштувань
+@Entity(tableName = "settings")
 data class Settings(
+    @PrimaryKey(autoGenerate = true)
     val id:Int = 0,
     val darkTheme: Boolean = false, //false Light Theme, true Dark Theme
     val langUkr: Boolean = false, //false English, true Ukrainian
@@ -19,7 +26,9 @@ data class Settings(
 )
 
 //Дані вписані в завдання
+@Entity(tableName = "task")
 data class Task(
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val active: Boolean = true,
     val name: String,
@@ -33,6 +42,7 @@ data class Task(
 
 //Росклад виконання
 data class Schedule(
+    //@PrimaryKey(autoGenerate = true)
     val id: Int,
     // A field may contain an asterisk (-1), which always stands for
     // "first-last"
@@ -43,4 +53,3 @@ data class Schedule(
     val dayOfWeek: Int, //1-7
     val task_id: Int
 )
-

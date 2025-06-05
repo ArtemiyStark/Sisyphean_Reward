@@ -3,6 +3,7 @@ package com.artemiystark.sisyphean_reward.data
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.time.LocalDateTime
+import java.util.Date
 
 
 // Нагородні бали
@@ -26,7 +27,7 @@ data class Settings(
 )
 
 //Дані вписані в завдання
-@Entity(tableName = "task")
+@Entity(tableName = "tasks")
 data class Task(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
@@ -36,13 +37,14 @@ data class Task(
     val steps: Int = 1,
     val currentStep: Int = 0,
     val points: Int = 1,
-    val lastRunTime: LocalDateTime,
-    val nextRunTime: LocalDateTime
+    val lastRunTime: Date,
+    val nextRunTime: String
 )
 
 //Росклад виконання
+@Entity(tableName = "schedules")
 data class Schedule(
-    //@PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     // A field may contain an asterisk (-1), which always stands for
     // "first-last"

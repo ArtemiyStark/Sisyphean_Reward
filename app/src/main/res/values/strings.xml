@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Sisyphean_Reward</string>
+    <string name="attention">Attention</string>
+    <string name="back_button">Back</string>
+    <string name="delete">Delete</string>
+    <string name="delete_question">Are you sure you want to delete?</string>
+    <string name="no_task_description">You don`t have any task</string>
+    <string name="task">Task</string>
+    <string name="task_detail_title">Task Details</string>
+    <string name="task_entry_title">Add Task</string>
 </resources>

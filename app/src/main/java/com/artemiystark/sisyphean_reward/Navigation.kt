@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.artemiystark.sisyphean_reward.ui.home.HomeScreen
+import com.artemiystark.sisyphean_reward.ui.task.TaskDetailsDestination
+import com.artemiystark.sisyphean_reward.ui.task.TaskEntryDestination
 
 enum class Routes {
     Home,
@@ -16,11 +18,18 @@ enum class Routes {
 fun SRNavigation(
     navHostController: NavHostController = rememberNavController(),
 ) {
-    NavHost(navController = navHostController, startDestination = Routes.Home.name) {
+    NavHost(
+        navController = navHostController,
+        startDestination = Routes.Home.name
+    ) {
         composable(route = Routes.Home.name) {
-            HomeScreen(onNavigate = { id ->
-                navHostController.navigate(route = "${Routes.Detail.name}?id=$id")
-            })
+            HomeScreen(
+                onNavigate = { navHostController.navigate(TaskEntryDestination.route) },
+                navigateToTaskUpdate = {
+                    navHostController.navigate("${TaskDetailsDestination.route}/${it}")
+                }
+            )
+
         }
 //        composable(
 //            route = "${Routes.Detail.name}?id={id}",

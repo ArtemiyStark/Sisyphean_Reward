@@ -24,7 +24,7 @@ class HomeViewModel(
         viewModelScope.launch {
             repository.tasks.collectLatest {
                 state = state.copy(
-                    tasks = it
+                    taskList = it
                 )
             }
         }
@@ -38,5 +38,5 @@ class HomeViewModel(
 }
 
 data class HomeState (
-    val tasks:List<Task> = emptyList()
+    val taskList:List<Task> = emptyList()
 )

@@ -1,11 +1,6 @@
 package com.artemiystark.sisyphean_reward.data
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 //Data Access Object for Score
@@ -82,7 +77,7 @@ interface ScheduleDao{
     fun getAllSchedules(): Flow<List<Schedule>>
 
     @Query("SELECT * FROM schedules WHERE task_id =:taskId")
-    fun getAllSchedulesForTask(taskId:Int): Flow<List<Schedule>>
+    fun getAllSchedulesForTask(taskId: Int): Flow<List<Schedule>>
 
     @Query("SELECT * FROM schedules WHERE id =:scheduleId")
     fun getSchedule(scheduleId: Int): Flow<Schedule>

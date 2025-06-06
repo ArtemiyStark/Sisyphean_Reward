@@ -2,7 +2,6 @@ package com.artemiystark.sisyphean_reward.data
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.time.LocalDateTime
 import java.util.Date
 
 
@@ -38,7 +37,7 @@ data class Task(
     val currentStep: Int = 0,
     val points: Int = 1,
     val lastRunTime: Date,
-    val nextRunTime: String
+    val nextRunTime: Date
 )
 
 //Росклад виконання

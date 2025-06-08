@@ -5,6 +5,34 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!--    <color name="black">#FF000000</color>
+        <color name="white">#FFFFFFFF</color>-->
+
+    <!-- Шаблон
+ <color name="">#</color>
+ -->
+    <color name="imperial_purple">#9B0FFF</color>
+    <color name="imperial_magenta">#FF0F9B</color>
+    <color name="imperial_yellow">#FF9B0F</color>
+
+    <color name="black">#000000</color>                 <!-- Abbadon Black -->
+    <color name="light_black">#171314</color>           <!-- Corvus Black -->
+    <color name="purple_grey">#66656e</color>           <!-- Warpfiend Grey -->
+    <color name="light_purple_grey">#8b8893</color>     <!-- Slaanesh Grey -->
+    <color name="light_gray">#a2a5a7</color>            <!-- Grey Seer -->
+
+    <color name="blue">#0f3d7c</color>                  <!-- Macragge Blue -->
+    <color name="desaturated_blue">#2a497f</color>      <!-- Calgar Blue -->
+
+    <color name="dark_magenta">#8e2757</color>          <!-- Pink Horror -->
+    <color name="magenta">#b74073</color>               <!-- Emperors Children -->
+    <color name="pink">#f3abca</color>                  <!-- Fulgrim Pink -->
+
+    <color name="yellow">#fbb81c</color>                <!-- Averland Sunset -->
+
+    <color name="white">#ffffff</color>                 <!-- White Scars -->
+
+
+
+
 </resources>

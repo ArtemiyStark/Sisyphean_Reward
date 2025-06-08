@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.artemiystark.sisyphean_reward.R.string
+import com.artemiystark.sisyphean_reward.navigation.SRNavigation
 import com.artemiystark.sisyphean_reward.ui.theme.Sisyphean_RewardTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Sisyphean_RewardTheme {
-                // A surface container using the 'background' color from the theme
+
                 Surface (
                     modifier = Modifier.fillMaxSize(),
                 ) {
@@ -41,10 +42,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
 @Composable
 fun SRApp() {
     SRNavigation()
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,9 +78,7 @@ fun SRTopAppBar(
 
 
 @Composable
-fun SRBottomAppBar (
-
-){
+fun SRBottomAppBar (){
     BottomAppBar(
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.primary,

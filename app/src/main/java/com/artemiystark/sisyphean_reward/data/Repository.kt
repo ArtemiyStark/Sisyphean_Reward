@@ -1,5 +1,7 @@
 package com.artemiystark.sisyphean_reward.data
 
+import kotlinx.coroutines.flow.Flow
+
 class Repository(
     private val scoreDao: ScoreDao,
     private val settingsDao: SettingsDao,
@@ -19,6 +21,10 @@ class Repository(
     suspend fun deleteTask(task: Task){
         taskDao.delete(task)
     }
+
+    fun getTask(id: Int): Flow<Task?> = taskDao.getTask(id)
+
+    fun getAllTasks(): Flow<List<Task>> = taskDao.getAllTasks()
 
     // for Schedule
     suspend fun insertSchedule(schedule: Schedule){

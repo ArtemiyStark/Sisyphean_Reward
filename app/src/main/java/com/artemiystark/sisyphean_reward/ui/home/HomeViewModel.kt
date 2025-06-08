@@ -1,42 +1,30 @@
 package com.artemiystark.sisyphean_reward.ui.home
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.artemiystark.sisyphean_reward.Graph
-import com.artemiystark.sisyphean_reward.data.Repository
 import com.artemiystark.sisyphean_reward.data.Task
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.artemiystark.sisyphean_reward.data.Repository
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
-class HomeViewModel(
-    private val repository: Repository = Graph.repository
-):ViewModel() {
-    var state by mutableStateOf(HomeState())
-        private set
-    init {
-        getTasks()
-    }
 
-    private fun getTasks(){
-        viewModelScope.launch {
-            repository.tasks.collectLatest {
-                state = state.copy(
-                    taskList = it
-                )
-            }
-        }
-    }
+class HomeViewModel(repository: Repository) : ViewModel() {
 
-    fun deleteTask(task: Task){
-        viewModelScope.launch {
-            repository.deleteTask(task)
-        }
+
+    val homeUiState: StateFlow<HomeUiState> =
+        repository.getAllTasks().map { HomeUiState(it) }
+            .stateIn(
+                scope = viewModelScope,
+                started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
+                initialValue = HomeUiState()
+            )
+
+    companion object {
+        private const val TIMEOUT_MILLIS = 5_000L
     }
 }
 
-data class HomeState (
-    val taskList:List<Task> = emptyList()
-)
+
+data class HomeUiState(val taskList: List<Task> = listOf())

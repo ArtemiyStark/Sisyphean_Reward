@@ -4,12 +4,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.Icons.Filled
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -20,6 +27,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import com.artemiystark.sisyphean_reward.R.string
 import com.artemiystark.sisyphean_reward.navigation.SRNavigation
@@ -83,11 +91,42 @@ fun SRBottomAppBar (){
         containerColor = MaterialTheme.colorScheme.primaryContainer,
         contentColor = MaterialTheme.colorScheme.primary,
     ) {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            text = "Bottom app bar",
-        )
+        Row() {
+            Button(
+                onClick = { /*GO BACK */},
+                //modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.small,
+                enabled = true
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = stringResource(R.string.home),
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            Button(
+                onClick = { /*GO HOME */},
+                //modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.small,
+                enabled = true
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Star,
+                    contentDescription = stringResource(R.string.home),
+                )
+            }
+            Spacer(modifier = Modifier.weight(1f))
+            Button(
+                onClick = { /* SETTINGS */},
+                //modifier = Modifier.fillMaxWidth(),
+                shape = MaterialTheme.shapes.small,
+                enabled = true
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = stringResource(R.string.settings),
+                )
+            }
+        }
     }
 }

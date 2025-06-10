@@ -17,10 +17,6 @@ import com.artemiystark.sisyphean_reward.ui.task.TaskEntryDestination
 import com.artemiystark.sisyphean_reward.ui.task.TaskEditScreen
 import com.artemiystark.sisyphean_reward.ui.task.TaskEditDestination
 
-enum class Routes {
-    Home,
-    Detail
-}
 
 @Composable
 fun SRNavigation(
@@ -32,7 +28,7 @@ fun SRNavigation(
         startDestination = HomeDestination.route,
         modifier = modifier
     ) {
-        composable(route = Routes.Home.name) {
+        composable(route = HomeDestination.route) {
             HomeScreen(
                 navigateToTaskEntry = { navController.navigate(TaskEntryDestination.route) },
                 navigateToTaskUpdate = {
@@ -55,7 +51,8 @@ fun SRNavigation(
         ) {
             TaskDetailsScreen(
                 navigateToEditTask = { navController.navigate("${TaskEditDestination.route}/$it") },
-                navigateBack = { navController.navigateUp() }
+                //navigateBack = { navController.navigateUp() }
+                navigateBack = { navController.navigate(HomeDestination.route)}
             )
         }
         composable(

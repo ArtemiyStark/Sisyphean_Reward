@@ -1,11 +1,29 @@
 <resources>
-    <string name="app_name">Sisyphean_Reward</string>
+    <string name="app_name">You Score: 27</string>
     <string name="attention">Attention</string>
     <string name="back_button">Back</string>
     <string name="delete">Delete</string>
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="no_task_description">You don`t have any task</string>
     <string name="task">Task</string>
+    <string name="task_steps">Task Steps</string>
+    <string name="task_current_step">Task curent step</string>
+    <string name="task_description">Task description</string>
+    <string name="task_points">Task points</string>
+    <string name="task_lastRunTime">Task last rum time</string>
     <string name="task_detail_title">Task Details</string>
+    <string name="task_current_step_reg">Task curent step*</string>
+    <string name="task_edit_title">Edit Task</string>
     <string name="task_entry_title">Add Task</string>
+    <string name="task_name_req">Task Name*</string>
+    <string name="task_steps_req">Task Steps*</string>
+    <string name="task_points_req">Task Points*</string>
+    <string name="progress">progress: %d/%d</string>
+    <string name="save_action">Save</string>
+    <string name="run_action">Run</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="required_fields">*required fields</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
 </resources>

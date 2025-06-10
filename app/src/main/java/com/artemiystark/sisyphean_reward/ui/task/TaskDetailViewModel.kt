@@ -23,8 +23,7 @@ class TaskDetailViewModel(
         repository.getTask(taskId)
             .filterNotNull()
             .map {
-                //TaskDetailsUiState(active = (it.steps - it.currentStep) <= 0, taskDetails = it.toTaskDetails())
-                TaskDetailsUiState(active = true, taskDetails = it.toTaskDetails())
+                TaskDetailsUiState(active = (it.steps - it.currentStep) > 0, taskDetails = it.toTaskDetails())
             }.stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
@@ -37,12 +36,13 @@ class TaskDetailViewModel(
             val currentTask = uiState.value.taskDetails.toTask()
             if (currentTask.currentStep < currentTask.steps) {
                 repository.updateTask(currentTask.copy(currentStep = currentTask.currentStep + 1))
+            } else {
             }
         }
     }
 
 
-    suspend fun deleteItem() {
+    suspend fun deleteTask() {
         repository.deleteTask(uiState.value.taskDetails.toTask())
     }
 

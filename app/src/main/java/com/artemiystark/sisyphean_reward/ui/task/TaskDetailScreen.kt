@@ -44,6 +44,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.artemiystark.sisyphean_reward.navigation.NavigationDestination
 import com.artemiystark.sisyphean_reward.R
+import com.artemiystark.sisyphean_reward.SRBottomAppBar
 import com.artemiystark.sisyphean_reward.SRTopAppBar
 import com.artemiystark.sisyphean_reward.data.Task
 import com.artemiystark.sisyphean_reward.ui.AppViewModelProvider
@@ -76,6 +77,9 @@ fun TaskDetailsScreen(
                 navigateUp = navigateBack
             )
         },
+        bottomBar = {
+            SRBottomAppBar()
+        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { navigateToEditTask(uiState.value.taskDetails.id) },
@@ -96,10 +100,10 @@ fun TaskDetailsScreen(
     ) { innerPadding ->
         TaskDetailsBody(
             taskDetailsUiState = uiState.value,
-            onSellItem = { viewModel.runOneStep() },
+            onRunTask = { viewModel.runOneStep() },
             onDelete = {
                 coroutineScope.launch {
-                    viewModel.deleteItem()
+                    viewModel.deleteTask()
                     navigateBack()
                 }
             },
@@ -117,7 +121,7 @@ fun TaskDetailsScreen(
 @Composable
 private fun TaskDetailsBody(
     taskDetailsUiState: TaskDetailsUiState,
-    onSellItem: () -> Unit,
+    onRunTask: () -> Unit,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -130,10 +134,10 @@ private fun TaskDetailsBody(
             task = taskDetailsUiState.taskDetails.toTask(), modifier = Modifier.fillMaxWidth()
         )
         Button(
-            onClick = onSellItem,
+            onClick = onRunTask,
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.small,
-            enabled = !taskDetailsUiState.active
+            enabled = taskDetailsUiState.active
         ) {
             Text(stringResource(R.string.run_action))
         }
@@ -246,6 +250,6 @@ fun TaskDetailsScreenPreview() {
     Sisyphean_RewardTheme  {
         TaskDetailsBody(TaskDetailsUiState(
             active = true, taskDetails = TaskDetails(1, "Пройти 1000 кроків", "", "10")
-        ), onSellItem = {}, onDelete = {})
+        ), onRunTask = {}, onDelete = {})
     }
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.artemiystark.sisyphean_reward.SRTopAppBar
 import com.artemiystark.sisyphean_reward.R
+import com.artemiystark.sisyphean_reward.SRBottomAppBar
 import com.artemiystark.sisyphean_reward.navigation.NavigationDestination
 import com.artemiystark.sisyphean_reward.ui.AppViewModelProvider
 import com.artemiystark.sisyphean_reward.ui.theme.Sisyphean_RewardTheme
@@ -44,6 +45,9 @@ fun TaskEditScreen(
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )
+        },
+        bottomBar = {
+            SRBottomAppBar()
         },
         modifier = modifier
     ) { innerPadding ->
